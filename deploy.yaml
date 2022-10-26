@@ -1,0 +1,17 @@
+import: 
+  - recipe/symfony.php
+
+config:
+  repository: 'https://github.com/Dmaina5054/sleepingsymfony'
+
+hosts:
+  10.18.7.68:
+    remote_user: deployer
+    deploy_path: '~/sleepingsymfony'
+
+tasks:
+  build:
+    - run: uptime  
+
+after:
+  deploy:failed: deploy:unlock

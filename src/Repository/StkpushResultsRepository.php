@@ -68,10 +68,16 @@ class StkpushResultsRepository extends ServiceEntityRepository
 
     public function findAll(): array
     {
-        return $this->createQueryBuilder('s')
+        try {
+            return $this->createQueryBuilder('s')
             ->orderBy('s.id', 'ASC')
             ->getQuery()
-            ->getResult();
+            ->getResult(); 
+        }
+    catch(\Exception $e){
+        return [$e];
+
+    }
     }
 
     //    public function findOneBySomeField($value): ?StkpushResults
